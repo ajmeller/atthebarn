@@ -1,4 +1,4 @@
 <div *ngIf="auth.isAuthenticated$ | async">
   <button>logout</button>
 </div>
-<button>Sign In With Spotify</button>
+<button (click)="burnerFn()">Sign In With Spotify</button>

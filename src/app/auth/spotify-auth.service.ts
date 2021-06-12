@@ -1,29 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class SpotifyAuth {
   constructor(private http: HttpClient) {}
 
   apiUrl: string = 'https://accounts.spotify.com/authorize';
+  tokenUrl: string = 'https://accounts.spotify.com/api/token';
+
   clientId: string = environment.auth0.clientId;
   codeChallenge: string = '';
+  clientSecret: string = '';
 
-  spotifyAuth() {
+  getToken(): Observable<any> {
     return this.http.post(
-      'https://accounts.spotify.com/api/token',
+      this.tokenUrl,
       { grant_type: 'client_credentials' },
       {
         headers: {
-          Authorization: 'Basic <base64 encoded client_id:client_secret>',
+          Authorization:
+            'Basic' + btoa(this.clientId + ':' + this.clientSecret),
         },
       }
     );
   }
-  //TODO: configure auth token
 
   userAuth() {
     return this.http.get(
