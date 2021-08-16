@@ -23,8 +23,4 @@ export class SpotifyService {
       },
     });
   }
-
-  /*   checkSavedAlbumCount() {
-    return this.getUserAlbums.subscribe((data: any) => {});
-  } */
 }

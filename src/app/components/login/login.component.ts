@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { SpotifyAuth } from '../auth/spotify-auth.service';
+import { SpotifyAuth } from '../../services/auth/spotify-auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
